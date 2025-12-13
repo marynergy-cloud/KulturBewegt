@@ -1,544 +1,224 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marynergy — Connect · Grow · Create</title>
-  <meta name="description" content="Marynergy — Verbindung, Wachstum und Heilung. Inspiration für Körper, Geist und Herz.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marynergy Flow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --ink-color: #111111;
+            --font-main: 'Inter', sans-serif; 
+            --container-width: 800px;
+        }
 
-  <!-- Google Fonts -->
-  <link rel="preconnecthref="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@300;400;700&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--ink-color);
+            font-family: var(--font-main); 
+            font-weight: 300;
+            line-height: 1.6;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico">
+        /* VIDEO BACKGROUND */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            opacity: 0.4; /* Sehr hell lassen, damit Weiß dominiert */
+            filter: grayscale(100%) brightness(1.2); /* S/W und extra hell */
+        }
 
-  <!-- Open Graph -->
-  <meta property="og:site_name" content="Marynergy">
-  <meta property="og:title" content="Marynergy — Verbindung · Wachstum · Heilung">
-  <meta property="og:description" content="Inspiration für Körper, Geist und Herz. Praktiken, Bildung, und Einblicke für ganzheitliches persönliches Wachstum.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://your-domain.com/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
+        .container { 
+            max-width: var(--container-width); 
+            margin: 0 auto; 
+            padding: 0 30px; 
+            position: relative;
+            z-index: 1;
+        }
 
-  <style>
-    /* --- Ergänzungen / Anpassungen für Alegreya, zentrierte Überschriften und Panel-Italics --- */
+        header { padding: 50px 0; margin-bottom: 60px; }
+        .logo { 
+            font-size: 1.2rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            border-bottom: 2px solid var(--ink-color); 
+            display: inline-block; 
+            padding-bottom: 5px;
+            font-weight: 600;
+        }
 
-/* 1) Stelle sicher, dass überall Alegreya verwendet wird */
-html, body, header, footer, main, nav, .tab-content, .tab-inner, .panel, .panel * {
-  font-family: 'Alegreya', serif !important;
-}
+        .hero h1 {
+            font-size: 3.5rem; 
+            line-height: 1.1;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 80px;
+        }
 
-/* 2) Einheitliche Basis-Größe (bei Bedarf anpassen). Damit erben alle Elemente dieselbe Größe. */
-html, body {
-  font-size: 0.9rem; /* Basisgröße: 1rem = normale Textgröße */
-}
+        .triptych {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 100px;
+            border-top: 1px solid var(--ink-color);
+            border-bottom: 1px solid var(--ink-color);
+            padding: 40px 0;
+            /* Milchglas-Effekt für bessere Lesbarkeit */
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+        }
+        .triptych-item h3 { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;}
+        .triptych-item p { font-size: 0.9rem; max-width: 200px; margin: 0 auto;}
 
-/* 3) Überschriften zentrieren (nicht linksbündig) — Überschriften bleiben erkennbar anders (Größe/Gewicht) */
-h1, h2, h3, h4, h5, h6 {
-  text-align: center;
-  margin-left: 0;
-  margin-right: 0;
-  font-family: 'Alegreya', serif;
-  font-weight: 600; /* Überschriften etwas schwerer */
-  line-height: 1.2;
-  /* optional: leicht größere Schrift für Überschriften — passe an oder entferne, wenn du gleiche Größe willst */
-  font-size: 1.5rem;
-}
+        .menu-section { margin-bottom: 80px; }
+        .menu-title { 
+            font-size: 1.8rem; 
+            margin-bottom: 50px; 
+            text-decoration: underline; 
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .session-item {
+            margin-bottom: 40px;
+            padding: 30px; 
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(17, 17, 17, 0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .session-name { font-size: 1.5rem; margin-bottom: 10px; font-weight: 600; text-transform: uppercase;}
+        .session-desc { font-size: 1rem; margin-bottom: 20px; }
+        .session-tags { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            background: #111;
+            color: #fff;
+            display: inline-block;
+            padding: 4px 12px; 
+        }
 
-/* Hinweis: Falls du möchtest, dass Überschriften NICHT in Schriftart, sondern nur in Ausrichtung abweichen,
-   entferne font-family/font-weight/font-size in der Überschriftenregel und lasse nur text-align:center; */
+        .cta-box {
+            border: 1px solid var(--ink-color);
+            padding: 40px;
+            margin-bottom: 60px;
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(5px);
+        }
+        .btn-link {
+            font-size: 1rem;
+            color: var(--ink-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--ink-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .sub-note { 
+            font-size: 0.85rem; 
+            margin-bottom: 40px;
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            line-height: 1.8;
+        }
 
-    /* Fonts */
-    @font-face {
-      font-family: 'Alegreya';
-      src: url('fonts/Alegreya-Regular.woff2') format('woff2'),
-           url('fonts/Alegreya-Regular.woff') format('woff');
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Alegreya';
-      src: url('fonts/Alegreya-Italic.woff2') format('woff2'),
-           url('fonts/Alegreya-Italic.woff') format('woff');
-      font-weight: 400;
-      font-style: italic;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Alegreya';
-      src: url('fonts/Alegreya-Bold.woff2') format('woff2'),
-           url('fonts/Alegreya-Bold.woff') format('woff');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
+        footer { padding-bottom: 40px; font-size: 0.8rem; font-weight: 500; }
 
-    /* Base font family and size */
-    body {
-      font-family: 'Alegreya', serif;
-      font-size: 1rem; /* Uniform size */
-    }
-
-    /* Keep italics */
-    i, em {
-      font-style: italic;
-    }
-
-    :root {
-      --max-width: 700px;
-      --radius: 12px;
-      --tab-padding: 1.5rem;
-      --accent: #007b5e;
-      --text: #111;
-      --overlay: rgba(255, 255, 255, 0.78);
-      --background: #ffffff;
-      --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-      --link-default: #007b5e;
-      --link-hover: #1e90ff;
-      --link-focus: #2bd19b;
-      --link-muted: #555;
-      --link-accent: #1e90ff;
-      --link-accent-weak: rgba(30,144,255,0.3);
-    }
-
-    .clickable {
-      color: #000;
-      cursor: pointer;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding: 0 1px;
-      transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .clickable:hover,
-    .clickable:active {
-      color: #1e90ff;
-      border-bottom-color: rgba(30,144,255,0.3);
-    }
-    .clickable:focus-visible {
-      outline: none;
-      color: #2bd19b;
-      box-shadow: 0 0 0 4px rgba(43,209,155,0.4);
-      border-radius: 3px;
-    }
-
-    .visually-hidden {
-      position: absolute !important;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      white-space: nowrap;
-      border: 0;
-    }
-    .visually-hidden.focusable:focus,
-    .visually-hidden.focusable:active {
-      position: static !important;
-      width: auto;
-      height: auto;
-      margin: 0;
-      overflow: visible;
-      clip: auto;
-      clip-path: none;
-      white-space: normal;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body { height: 100%; margin: 0; }
-
-    body {
-      min-height: 100vh;
-      color: var(--text);
-      line-height: 1.45;
-      color-scheme: light dark;
-      background-color: var(--background);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      font-synthesis: none;
-      margin: 0;
-    }
-
-    html::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background-image: url('art-bg.jpg'); 
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-    }
-
-    @media (max-width: 1024px) {
-      body { background-attachment: scroll; }
-    }
-
-    header, footer {
-      text-align: center;
-      padding: 1rem;
-      color: var(--text);
-      background-color: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    nav { text-align: center; margin-top: 0.5rem; }
-    nav button {
-      margin: 0 0.35rem;
-      padding: 0.45rem 0.9rem;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      border-radius: 6px;
-      font: inherit;
-      transition: background-color 0.18s ease, color 0.18s ease;
-      outline: none;
-    }
-    nav button:focus { outline: 3px solid rgba(0,123,94,0.3); outline-offset: 3px; }
-    nav button.active { background-color: var(--accent); color: #fff; font-weight: 600; }
-
-    main { max-width: var(--max-width); margin: 1.25rem auto 3rem; padding: 0 1rem; }
-    .tabs { position: relative; }
-
-  .tab-content {
-  display: none;
-  position: relative;
-  margin: 0 auto;
-  min-height: 340px;
-  padding: var(--tab-padding);
-  border-radius: var(--radius);
-  overflow: visible;
-  background-image:
-  background-size: cover;
-  background-position: center;
-  color: var(--text);
-  --overlay-local: var(--overlay);
-  --text-local: var(--text);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(6px); /* Unschärfe für den Hintergrund */
-  -webkit-backdrop-filter: blur(6px); /* Safari-Support */
-  opacity: 0.8;
-  transform: translateY(8px);
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s ease,
-    background-image 0.6s ease-in-out;
-}
-
-    .tab-content.active { display: block; opacity: 1; transform: none; pointer-events: auto; }
-.tab-inner {
-  position: relative;
-  max-width: calc(var(--max-width) - 64px);
-  margin: 0 auto;
-  background-color: var(--overlay-local, var(--overlay));
-  color: var(--text-local, var(--text));
-  border-radius: calc(var(--radius) - 2px);
-  padding: 1.6rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  line-height: 1.65;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  background-size: cover;
-  background-position: center;
-}
-
-/* Große Hintergrundbilder für jede Sektion */
-.bg-inspiration { background-image: url('art-bg.jpg'); }
-.bg-musik { background-image: url('art-bg.jpg'); }
-
-
-    .tab-inner p { max-width: 58ch; margin-left: auto; margin-right: auto; }
-
-    .bg-connect, .bg-education, .bg-inspiration { background-color: #FFFDF5; }
-    .subtle-text { color: #666; margin: 0 0 0rem 0; text-align: center; }
-    p { margin: 0.5rem 0; }
-    .section { margin: 1rem 0; }
-    
-
-    blockquote {
-      margin: 0.8rem 0;
-      padding: 0.7rem 1rem;
-      border-left: 4px solid var(--accent);
-      border-radius: 6px;
-      background-color: rgba(255, 255, 255, 0.85);
-      font-style: italic;
-      font-size: 0.9rem;
-      color: inherit;
-    }
-
-    ul { margin: 0.5rem 0 1rem 1.2rem; padding-left: 1.2rem; }
-
-    a:focus, button:focus { outline: 3px solid rgba(0,123,94,0.16); outline-offset: 3px; }
-
-    @media (max-width: 560px) {
-      main { margin-top: 0.8rem; padding: 0 0.8rem; }
-      nav button { padding: 0.4rem 0.6rem; }
-      .tab-content { padding: 0.9rem; border-radius: 10px; min-height: 260px; }
-      .tab-inner { padding: 1rem; max-width: calc(100% - 32px); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .tab-content { transition: none !important; }
-      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root { --accent: #2bd19b; --text: #eee; --overlay: rgba(0,0,0,0.6); --background: #071011; }
-      body { background-color: var(--background); color: var(--text); }
-      header, footer { background-color: rgba(6,10,12,0.6); color: #fff; }
-      .tab-inner { color: var(--text); background-color: var(--overlay); }
-      blockquote { background-color: rgba(10,10,10,0.45); border-left-color: var(--accent); color: #ddd; }
-    }
-
-    .panel-overlay { position: fixed; inset: 0; display: none; z-index: 2000; justify-content: flex-end; align-items: flex-start; background: rgba(0,0,0,0.4); }
-    .panel-overlay.open { display: flex; }
-    .panel { width: 420px; max-width: 95%; height: 100vh; background: #fff; overflow-y: auto; box-shadow: -8px 0 24px rgba(0,0,0,0.2); transform: translateX(100%); transition: transform 0.22s ease; position: relative; padding: 20px; }
-    .panel.open { transform: translateX(0); }
-    .panel .close { position: absolute; top: 12px; right: 12px; background: transparent; border: none; cursor: pointer; }
-    .panel .hero { width: 100%; height: 160px; background-size: cover; background-position: center; border-radius: 8px; margin-bottom: 14px; display: none; }
-  </style>
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .triptych { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-  
 <body>
-  <header>
-     <p class="subtle-text">愛 LIEBE</p>
-    <h1>Marynergy</h1>
-    <p>Connect · Grow · Create</p>
-    <nav aria-label="Haupttabs" role="tablist">
-      <button type="button" id="tab-btn-inspiration" role="tab" aria-controls="inspiration" aria-selected="true">Inspiration</button>
-      <button type="button" id="tab-btn-musik" role="tab" aria-controls="musik" aria-selected="false">Musik</button>
-  </header>
 
-  <main>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="art-bg.mp4" type="video/mp4">
+    </video>
 
-      <section id="inspiration" class="tab-content bg-inspiration" role="tabpanel" aria-labelledby="tab-btn-inspiration" aria-hidden="false" data-bg="art-bg.jpg">
-        <div class="tab-inner">
-          <blockquote>
-            „Du magst denken, dass du in der Gegenwart lebst, aber tatsächlich lebst du in der Vergangenheit, solange Gedanken wirken… Wenn dies dir nicht erzählt, wiederholt oder gezeigt wird, kannst du endlos über Bücher reden. Dies kommt zuerst. Danach kannst du die Bücher lesen.“ <strong>– J. Krishnamurti</strong>
-          </blockquote>
-          <br><br>
-    <em><span class="clickable" data-info="Die Auswahl an Büchern und Persönlichkeiten bleibt bewusst überschaubar, um den Rahmen nicht zu sprengen. Dennoch soll sie einen Eindruck von der Vielfalt und dem Reichtum menschlichen Seins vermitteln – als kleiner Ausschnitt eines weit größeren Ganzen.<br><br><br><strong>Das ist der Schlüssel zu allem:</strong><br><br>
-<em>Sei kein Mitläufer. Sei ein Schüler und nimm Ratschläge an, aber keine Befehle. Nimm Informationen auf, aber lass nicht zu, dass dir jemand dein Leben befiehlt.<br><br>
-<strong>Stelle sicher, dass das, was du tust, das Produkt deiner eigenen Schlussfolgerung ist.</strong>
-<br><br>
-Nicht das zu tun, was jemand anderes sagt. Nimm, was jemand anderes sagt, verarbeite es, denke darüber nach, grüble darüber. Wenn es dich zum Nachdenken bringt, wenn es dich zum Staunen bringt, dann ist es wertvoll.
-<br><br>
-Und wenn du dann handelst, stelle sicher, dass die Handlung nicht das ist, was dir jemand gesagt hat zu tun. Stelle sicher, dass die Handlung das Produkt deiner eigenen Schlussfolgerung ist.</em>"data-img=""><em>Eine kleine Auswahl inspirierender Bücher und Persönlichkeiten:</em></span>
-<br>
-<br>
-    <span class="clickable" data-info="<strong>Miyamoto Musashi</strong>, legendärer Samurai, Schwertkämpfer und Philosoph: <em>„Das Buch der fünf Ringe“</em> lehrt, wie Meisterschaft und Selbstdisziplin durch klare Prinzipien und innere Gelassenheit erreicht werden; es inspiriert, Konflikte mit klarem Geist zu meistern.<br><br>Kaum ein Werk hat mich so tief geprägt wie dieses.</em>" data-img=""><em>🌸 The Book of Five Rings</em></span><br>
+    <div class="container">
+        <header>
+            <div class="logo">Marynergy愛 <span>Flow</span></div>
+        </header>
+        
+        <section class="hero">
+            <h1>Der Ausdruck.</h1>
+            <p>Musik. Tanz. QiDance.</p>
+        </section>
 
+        <section class="triptych">
+            <div class="triptych-item">
+                <h3>Musik</h3>
+                <p>Frequenz & Resonanz.</p>
+            </div>
+            <div class="triptych-item">
+                <h3>Tanz</h3>
+                <p>Intuition & Freiheit.</p>
+            </div>
+            <div class="triptych-item">
+                <h3>QiDance</h3>
+                <p>Die Transformation.</p>
+            </div>
+        </section>
 
-    <span class="clickable" data-info="<em>„Selbstbetrachtungen“</em>: Der römische Kaiser und Philosoph <strong>Marcus Aurelius</strong> formuliert die Kernprinzipien des Stoizismus — Selbstreflexion, ethische Integrität und Verantwortung für das eigene Handeln.<br><br>Seine Schriften betonen die Kultivierung innerer Ruhe, Charakterstärke und die Suche nach Weisheit angesichts der Herausforderungen des Lebens.<br><br>Wie ein zeitloser Leitfaden für ein überlegtes Leben ist es ein Buch, das immer wieder gelesen werden sollte." data-img=""><em>🌸 Meditations</em></span><br>
+        <section class="menu-section">
+            <h2 class="menu-title">Die Praxis</h2>
 
-    <span class="clickable" data-info="<strong>Napoleon Hill</strong>’s <em>„Denke nach und werde reich“</em> ist ein grundlegender Leitfaden für Erfolg und persönliche Entwicklung.<br><br>Es vermittelt Prinzipien wie Zielsetzung, Selbstdisziplin, positives Denken und konsequentes Handeln — Werkzeuge, die sowohl Wohlstand als auch persönliche Erfüllung fördern.<br><br>Wie eine Landkarte zum Erfolg zeigt das Buch, dass die Anwendung dieser zeitlosen Lektionen das Leben verändern kann, wobei die volle Wirkung seiner Prinzipien nur von wenigen erreicht wird." data-img=""><em>🌸 Think and Grow Rich</em></span><br>
+            <div class="session-item">
+                <div class="session-name">Tanz</div>
+                <p class="session-desc">
+                    Wir nutzen verschiedene Rhythmen und Musikströme, um den Kopf auszuschalten und durch intuitiven Tanz Körper zu befreien und Herz zu öffnen.
+                </p>
+                <div class="session-tags">Freisetzung • Entladung • Intuition</div>
+            </div>
 
-   <span class="clickable" data-info="<em>„Die Kunst des Krieges“</em> von <strong>Sun Tzu</strong> ist ein klassisches Werk über Strategie, Taktik und Führung.<br><br>Es lehrt, Herausforderungen klug zu analysieren, Gegner zu verstehen und mit Klarheit und Flexibilität zu handeln.<br><br>Wie ein zeitloser Leitfaden zur Navigation von Konflikten und Konkurrenz gelten seine Prinzipien nicht nur für den Krieg, sondern auch für Wirtschaft und Leben und bieten Einblicke in Strategie, Entscheidungsfindung und das Gleichgewicht zwischen Vorbereitung und Anpassungsfähigkeit." data-img=""><em>🌸 The Art of War</em></span><br>
+            <div class="session-item">
+                <div class="session-name">QiDance</div>
+                <p class="session-desc">
+                    Die Verschmelzung. Atem und Takt führen in den Flow-Zustand. Blockaden lösen sich, Energie wird transformiert.
+                </p>
+                <div class="session-tags">Qigong • Rhythmus • Heilung</div>
+            </div>
+        </section>
 
-   <span class="clickable" data-info="<em>„Der Fürst“</em> von <strong>Niccolò Machiavelli</strong> ist ein klassisches Werk der politischen Philosophie und bietet pragmatische Strategien zu Macht, Führung und Einfluss.<br><br>Es zeigt, dass das Erreichen politischer Ziele oft Weisheit, Flexibilität und Realismus erfordert – und verdeutlicht, dass Effektivität manchmal Vorrang vor Idealen haben kann, ohne die langfristige Stabilität zu gefährden.<br><br>Als Leitfaden zum Umgang mit menschlicher Ambition bleibt es eine unverzichtbare Lektüre für alle, die Macht, Gesellschaft und die Komplexität menschlichen Verhaltens verstehen wollen." data-img=""><em>🌸 The Prince</span><br>
+        <div class="cta-box">
+            <p>„Jeder Prozess beginnt mit Resonanz.“</p>
+            <a href="mailto:marynergy@gmail.com?subject=Anfrage%20Ausdruck" class="btn-link">
+                Gespräch vereinbaren →
+            </a>
+        </div>
 
-   <span class="clickable" data-info="<em>„Der reichste Mann von Babylon“</em> von <strong>George S. Clason</strong> ist ein zeitloser Klassiker der Finanzweisheit, erzählt in lehrreichen Gleichnissen aus dem alten Babylon.<br><br>Er vermittelt grundlegende Prinzipien zu Sparsamkeit, Investitionen und nachhaltigem Vermögensaufbau – und zeigt, dass finanzieller Erfolg weniger vom Glück abhängt als von Disziplin, klugen Entscheidungen und konsequenter Planung.<br><br>Als inspirierender Leitfaden für den Umgang mit Geld bleibt dieses Werk eine unverzichtbare Lektüre für alle, die finanzielle Stabilität und Unabhängigkeit anstreben." data-img=""><em>🌸 The Richest Man in Babylon</em></span><br>
+        <p class="sub-note">
+            Für die Vertiefung in Klang (Klangtherapie) oder Kunst (Kunsttherapie) öffne ich den Zugang zu meinem Expertenkreis. Details zu diesen Wegen erläutere ich gerne im persönlichen Gespräch.
+        </p>
 
-
-   <span class="clickable" data-info="<em>„1984“ – <strong>George Orwell</strong></em>: 1984 ist ein eindringlicher dystopischer Roman über Überwachung, Totalitarismus und Propaganda.<br><br>Er zeigt eine Welt, in der Freiheit, Wahrheit und Individualität unter absoluter Kontrolle zerdrückt werden – eine Welt, in der selbst Gedanken überwacht und die Realität beliebig umgeschrieben werden kann.<br><br>Wie ein Spiegel für die Gesellschaft warnt er vor Manipulation, blindem Gehorsam und dem Verlust persönlicher Freiheit.<br><br>Orwells Geschichte erinnert daran, Autoritäten zu hinterfragen, kritisch zu denken und die Wahrheit zu schützen.<br><br>Seine Botschaft – über Macht, Kontrolle und menschliche Integrität – ist heute aktueller denn je." data-img=""><em>🌸 1984</em></span><br>
-
-
-   <span class="clickable" data-info="<em>In „Eine neue Erde“ offenbart <strong>Eckhart Tolle</strong>, wie Menschen ihr Bewusstsein erweitern können, um ein erfüllteres und friedvolleres Leben zu führen.<br><br>Er identifiziert das Ego als Wurzel von Leid, Konflikten und Unzufriedenheit und zeigt, wie man sich von egozentrischen Denkmustern befreit.<br><br>Wie ein Leitfaden für ein achtsames Leben verdeutlicht das Buch, wie die Kultivierung von Achtsamkeit und Präsenz nicht nur inneren Frieden schenkt, sondern auch zu einer positiven Transformation der Welt beiträgt." data-img=""><em>🌸 A New Earth</em></span><br>
-
-
-    <span class="clickable" data-info="<em>Die Bibel</em> ist einzigartig, weil sie zwei Arten von menschlichen Geschichten präsentiert: auf der einen Seite Beispiele, auf der anderen Seite Warnungen.<br><br>In Lebensgeschichten finden wir beides — beides ist wesentlich: Beispiele und Warnungen.<br><br>In der Bibel sagen die Beispiele: „Schaut euch das Leben dieser Menschen an. Folgt ihnen. Folgt ihrer Philosophie. Folgt ihrem Rat.“<br><br>Und dann gibt es die Warnungen: „Tut nicht, was diese Menschen getan haben.“ Sie machten Fehler, verschwendeten ihr Potenzial und verloren ihren Weg.<br><br>Beide Seiten der Geschichte sind von entscheidender Bedeutung." data-img=""><em>🌸 Die Bibel</em></span>
-    <br>
-    <br>
-
-    <em><span class="clickable" data-info="Siddhartha Gautama faszinierte mich bereits in meiner Jugend, als ich erkannte, dass der Buddhismus einen Weg bietet, das eigene Leben zu meistern.<br><br>Am meisten beeindruckte mich diese Idee: Beim Überqueren eines Flusses lässt man das Floß zurück — so sollte auch der Buddhismus verstanden werden.<br><br>Die Lehre ist ein Werkzeug, kein Besitz. Sie ermutigt dazu, den Buddhismus nicht als Last oder starren Dogma zu sehen, sondern als Leitfaden, den man letztlich loslassen kann." data-img="">🌱 Buddha</span><br>
-
-    <span class="clickable" data-info="Jesus verkörpert Mitgefühl, Vergebung und bedingungslose Liebe.<br><br>Sein Leben und seine Lehren inspirieren dazu, anderen mit Empathie, Geduld und Achtsamkeit zu begegnen.<br><br>Er forderte die Menschen auf, über sich selbst hinauszusehen, demütig zu handeln und eine Liebe zu leben, die Urteil und Angst übersteigt.<br><br>Die Energie von Liebe und Selbstlosigkeit, die durch ihn floss, wirkt weiterhin nach — heute und für alle Zeiten." data-img="">🌱 Jesus</span><br>
-
-    <span class="clickable" data-info="Konfuzius steht für Ethik, Weisheit und die Bedeutung von Bildung und Selbstreflexion.<br><br>Einer seiner Aphorismen gab mir Halt und half mir Ruhe und Klarheit in einer  lebensbedrohlichen Situation zu bewahren.<br><br>Seine Lehren inspirieren weiterhin zu überlegtem Handeln und moralischer Integrität." data-img="">🌱 Konfuzius</span><br>
-
-    <span class="clickable" data-info="Laozi steht für Dao, Natürlichkeit, Wu Wei (Handeln durch Nicht-Handeln) und Harmonie mit der Natur.<br><br>Viele seiner Einsichten spiegeln sich in meinem eigenen Lebensansatz wider und leiten mich dazu, mit Einfachheit und Balance zu handeln.<br><br>Seine Lehren ermutigen dazu, im Einklang mit dem natürlichen Fluss zu leben, inneren Frieden zu fördern und in jedem Moment präsent zu sein." data-img="">🌱 Laozi</span><br>
-
-    <span class="clickable" data-info="Heraklit steht für Wandel, Transformation und das Prinzip Panta Rhei (Alles fließt).<br><br>Er lehrt die Einheit der Gegensätze, das Wirken des Logos und die Kraft des Feuers als Urprinzip.<br><br>Viele seiner Einsichten über Vergänglichkeit, die Beständigkeit im Wandel und die Natur der kontinuierlichen Bewegung resonieren tief mit meinen eigenen Überzeugungen und prägen, wie ich den Fluss des Lebens und die Unvermeidbarkeit von Transformation wahrnehme." data-img="">🌱 Heraklit</span><br>
-
-    <span class="clickable" data-info="Sokrates hat mich seit meiner Jugend als kritischer Denker und Wahrheitssucher geprägt.<br><br>Seine sokratische Methode, sein Studium der Tugend und das Symbol des Schierlingsbechers stehen für tiefe Hingabe an die Wahrheit und die Spannung zwischen Gesetz und Gerechtigkeit.<br><br>Sein Beispiel inspiriert weiterhin zu sorgfältigem Hinterfragen, intellektueller Ehrlichkeit und dem Mut, Prinzipien auch angesichts von Widrigkeiten zu wahren." data-img="">🌱 Sokrates</span><br>
-
-
-    <span class="clickable" data-info="Epiktet, ein griechischer stoischer Philosoph des 1. Jahrhunderts n. Chr., lehrte, dass wahres Glück nicht von äußeren Umständen abhängt, sondern von der eigenen Einstellung und inneren Freiheit.<br><br>Er betonte, die eigenen Gedanken und Reaktionen zu meistern und gleichzeitig das zu akzeptieren, was außerhalb der eigenen Kontrolle liegt.<br><br>Überwiegend durch die Schriften seines Schülers Arrian überliefert, inspirieren seine Lehren weiterhin zu Resilienz, Selbstdisziplin und einer achtsamen Lebensweise." data-img="">🌱 Epiktet</span><br>
-
-
-    <span class="clickable" data-info="Franz von Assisi steht für ein Leben in Einfachheit und Demut, geprägt von Mitgefühl für Arme und Benachteiligte.<br><br>Er betont die Verbundenheit aller Wesen mit Gott, das Leben in Harmonie mit der Natur und die Förderung von Frieden, Liebe und selbstlosem Dienst als Weg zu spiritueller Erfüllung.<br><br>Sein Beispiel inspiriert weiterhin zu einem Leben, das in Freundlichkeit, Großzügigkeit und achtsamer Fürsorge für Menschen und die Welt verwurzelt ist.<br><br><em>„Gib mir Armut, gib mir Demut, gib mir Torheit um Christi Willen.“ – Franz von Assisi</em>" data-img="">🌱 Franz von Assisi</span><br>
-
-
-    <span class="clickable" data-info="Jalāl al-Dīn Muḥammad Rūmī steht für tiefes spirituelles Verlangen nach Einheit mit dem Göttlichen, Liebe, Toleranz und die transformative Kraft der inneren Reflexion.<br><br>Seine Lehren betonen, dass wahrer Frieden und Erfüllung aus der Verbindung mit dem eigenen Inneren und göttlicher Liebe entstehen.<br><br>Sie inspirieren weiterhin zu Achtsamkeit, Mitgefühl und einem herzlichen Lebensansatz, der zu Harmonie mit sich selbst und der Welt führt.<br><br><em>„Jenseits von richtig und falsch gibt es einen Ort. Dort werden wir uns treffen.“</em> – Rumi" data-img="">🌱 Rumi</span><br>
-
-
-    <span class="clickable" data-info="Giordano Bruno steht für unbeirrbaren Mut bei der Suche nach Wahrheit, intellektuelle Freiheit und die Erweiterung des menschlichen Denkens über traditionelle Grenzen hinaus.<br><br>Er verkörpert die Vision eines unendlichen Universums und die Überzeugung, dass Wissen und Glauben hinterfragt und eigenständig erforscht werden müssen.<br><br>Sein Beispiel inspiriert weiterhin furchtlose Neugier, Offenheit und den Mut, Konventionen bei der Suche nach Erkenntnis herauszufordern." data-img="">🌱 Bruno</span><br>
-
-
-    <span class="clickable" data-info="Isaac Newton steht für wichtige Entdeckungen in Physik und Mathematik, die die Ordnung und Gesetze des Universums aufzeigen.<br><br>Er erkannte, dass Naturgesetze — wie <em>„Für jede Aktion gibt es eine gleiche und entgegengesetzte Reaktion“</em> — die Bewegung und Harmonie der Welt bestimmen.<br><br>In diesem eleganten System von Sonne, Planeten und Kometen sah Newton den Beweis für die Existenz und Weisheit Gottes. Sein Beispiel inspiriert weiterhin Neugier, disziplinierte Forschung und eine tiefgehende Wertschätzung für die Harmonie der Natur.<br><br><em>„Wer halbherzig denkt, wird nicht an Gott glauben, aber wer wirklich denkt, muss an Gott glauben.“<br>– Isaac Newton</em> " data-img="">🌱 Newton</span><br>
-
-    <span class="clickable" data-info="Gottfried Wilhelm Leibniz steht für Rationalismus, Logik und Mathematik.<br><br>Er entwickelte das Binärsystem, das die Grundlage moderner Computer bildet, und seine Philosophie verbindet Vernunft, Ordnung und die Vision einer universellen Sprache der Zahlen.<br><br>Sein Beispiel inspiriert weiterhin analytisches Denken, Innovation und die Suche nach Wissen durch strukturiertes Denken.<br><br><em>„Gott hätte die Welt nicht erschaffen, wenn sie nicht die beste aller möglichen Welten wäre.“</em><br>– Gottfried Wilhelm Leibniz" data-img="">🌱 Leibniz</span><br>
-
-    <span class="clickable" data-info="Leo Tolstoi, russischer Schriftsteller und Philosoph, wurde stark von der Bergpredigt Jesu inspiriert.<br><br>In <em>Das Reich Gottes ist in euch</em> betont er, dass Gottes Reich in jedem Menschen beginnt.<br><br>Tolstoi setzt sich für Gewaltlosigkeit, innere Selbstprüfung, ein Leben in Mitgefühl und Wahrheit ein. Für ihn ist persönliche Transformation die Grundlage für gesellschaftlichen Frieden und Gerechtigkeit." data-img="">🌱 Tolstoy</span><br>
-
-    <span class="clickable" data-info="Nikola Tesla, Erfinder, Elektroingenieur und Visionär, revolutionierte Wissenschaft und Technologie durch seine Pionierarbeit mit Wechselstrom und das Verständnis von Energie.<br><br>Seine Kombination aus Innovation, technischem Genie und zukunftsweisender Vision macht ihn bis heute zu einer legendären Persönlichkeit.<br><br>Teslas Philosophie — <em>„Wenn du die Geheimnisse des Universums entdecken willst, denke in Begriffen von Energie, Frequenz und Schwingung.“</em> – Nikola Tesla" data-img="">🌱 Tesla</span><br>
-
-    <span class="clickable" data-info="Friedrich Nietzsche verkörpert das Infragestellen von Moral, Religion und traditionellen Werten.<br><br>Er betont Selbstverwirklichung, den Willen zur Macht und die bewusste Gestaltung des eigenen Lebens jenseits äußerlich auferlegter Normen, und inspiriert damit das Streben nach Größe und Authentizität.<br><br>Seine Philosophie fordert weiterhin konventionelles Denken heraus, fördert persönliche Verantwortung, kritische Reflexion und den Mut, den eigenen Weg zu definieren.<br><br><em>„Gott ist tot! Gott bleibt tot! Und wir haben ihn getötet! Wie sollen wir uns trösten, die Mörder aller Mörder?“ – Friedrich Nietzsche</em>" data-img="">🌱 Nietzsche</span><br>
-
-    <span class="clickable" data-info="Mahatma Gandhi, indischer Philosoph, Freiheitskämpfer und Verfechter gewaltlosen Widerstands, wurde von Werken wie Tolstois <em>Das Reich Gottes ist in euch</em> inspiriert.<br><br>Er befürwortete Prinzipien von Gewaltlosigkeit, moralischer Verantwortung und einfachem Leben und setzte sie durch passiven Widerstand im Kampf um Indiens Unabhängigkeit und soziale Gerechtigkeit um.<br><br>Sein Beispiel inspiriert weiterhin friedlichen Aktivismus, ethische Führung und die transformative Kraft prinzipientreuen Handelns.<br><br><em>„Es gibt keinen Weg zum Frieden. Frieden ist der Weg.“ – Mahatma Gandhi</em>" data-img="">🌱 Gandhi</span><br>
-
-
-    <span class="clickable" data-info="Albert Einstein, visionärer Physiker und Mathematiker, revolutionierte unser Verständnis von Raum, Zeit und Energie.<br><br>Er verkörpert Neugier, Kreativität und die Fähigkeit, die Gesetze des Universums sowohl mit Staunen als auch mit kritischer Reflexion zu erforschen, stets verbunden mit humanistischer Verantwortung.<br><br><em>„Der intuitive Geist ist ein heiliges Geschenk, und der rationale Geist ist ein treuer Diener. Wir haben eine Gesellschaft geschaffen, die den Diener ehrt und das Geschenk vergessen hat.“– Albert Einstein</em> " data-img="">🌱 Einstein</span><br>
-
-
-    <span class="clickable" data-info="Bruce Lee zeigt, dass wahre Meisterschaft nicht nur aus Instinkt oder Kontrolle entsteht, sondern aus der Harmonie von beidem.<br><br>Für ihn bedeutet Kampfkunst, sich selbst ehrlich auszudrücken, ohne sich selbst zu belügen, und jede Bewegung mit voller Entschlossenheit auszuführen.<br><br>Diese Philosophie inspiriert, weil sie mehr ist als Kampfkunst: Sie ist eine Lebenshaltung, die Disziplin, Kreativität und Authentizität miteinander verbindet.<br><br><em>„Leere deinen Geist, sei formlos, gestaltlos, wie Wasser… Sei Wasser, mein Freund.“ – Bruce Lee</em>" data-img="">🌱 Bruce Lee</span><br>
-
-    <span class="clickable" data-info="Thich Nhat Hanh lehrt Achtsamkeit, Mitgefühl und das bewusste Leben im gegenwärtigen Moment.<br><br>Er betont, dass wahres Glück und innerer Frieden nur entstehen, wenn wir uns selbst und anderen mit Freundlichkeit begegnen und jede Handlung bewusst ausführen.<br><br>Seine Lehren inspirieren dazu, Alltag und Spiritualität zu verbinden, kleine Handlungen bewusst zu erleben und Harmonie in sich und in der Welt zu fördern.<br><br>Seine Botschaft erinnert uns daran, dass innerer Frieden ein kontinuierlicher Prozess ist, der durch Aufmerksamkeit und Liebe kultiviert werden kann.<br><br><em>„Wenn du einatmest, weißt du, dass du einatmest.“<br>– Thich Nhat Hanh</em>" data-img="">🌱 Thich Nhat Hanh</span><br>
-
-    <span class="clickable" data-info="Jim Rohn gehört neben Miyamoto Musashi zu meinen größten Inspirationen und war entscheidend für mein persönliches Wachstum. Er stand für Selbstdisziplin, die Kraft der Gewohnheiten und zielgerichtetes Handeln.<br><br>
-  
-
-    Er zeigte, dass Erfolg und Erfüllung aus kontinuierlichem Lernen, persönlicher Verantwortung und konsequentem Einsatz entstehen.<br><br>
-
-    Seine Lehren prägen weiterhin meine Denkweise und inspirieren zu Durchhaltevermögen, bewusstem Leben sowie dem Streben nach sinnvoller persönlicher und beruflicher Entwicklung." data-img="">🌱 Jim Rohn</span><br>
-      <span class="clickable" data-info="Jane Goodall, renommierte Primatenforscherin und Umweltaktivistin, veränderte unser Verständnis von Tieren, Natur und dem Platz des Menschen in ihr.<br><br>Mit Empathie, Geduld und unerschütterlichem Glauben an das Gute in uns allen zeigt sie, dass wahre Wissenschaft Mitgefühl braucht – und echter Wandel in der Verbindung von Herz und Verstand entsteht.<br><br>Ihr Engagement für den Schutz der Erde und ihrer Lebewesen inspiriert Generationen dazu, achtsam zu handeln und Hoffnung niemals aufzugeben.<br><br><em>„Was du tust, macht einen Unterschied, und du musst entscheiden, welche Art von Unterschied du machen willst.“ – Jane Goodall</em>" data-img="">🌱 Jane Goodall</span><br>
-</em></p>
-</section>
-</div>
-           <div class="tabs" id="tabs">
-  <section id="musik" class="tab-content bg-musik active" role="tabpanel" aria-labelledby="tab-btn-musik" aria-hidden="false" data-bg="art-bg.jpg">
-    <div class="tab-inner">
- <blockquote><em>"Information is not knowledge. Knowledge is not wisdom. Wisdom is not truth. Truth is not beauty. Beauty is not love. Love is not music. Music is the best."</em><br>
-        <strong>– Frank Zappa</strong>
-      </blockquote><br><br>
-      <em>Kunst und Kultur öffnen den Geist, berühren das Herz und verankern uns im Moment. Sie fördern Verbindung, persönliches Wachstum und emotionale Heilung. Manchmal reicht ein einziges Musikstück, ein Gedicht oder eine Filmszene, um einen entscheidenden Moment der Erkenntnis oder Inspiration zu entfalten.<br><br>
-     
-      Musik und Tanz gehören zu meinen größten Leidenschaften. Sie setzen Emotionen frei, schenken Freude und den direkten Zugang zum Rhythmus des Lebens.<br><br><strong>‘Music-MIX’</strong> – eine Auswahl von Songs, über Jahrzehnte und Genres hinweg, mit einem Schwerpunkt auf Hip-Hop und R&B.</em><br><br>
-       <a href="https://music.youtube.com/playlist?list=PL9Q7n3WnviCHIbBepsBJS--DE8go1FAE2" target="_blank" rel="noopener noreferrer">🎶 Music-MIX
-</a><br>
+        <footer>
+            <a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid #111;">Zurück zur Hauptseite</a>
+        </footer>
     </div>
-  </section>
-</main>
-
-
-</main>
-
-
-<footer>
-<p>Dankbarkeit 🙏</p>
-<p><small>Quelle der Inspiration.</small></p>
-<p><a href="mailto:marynergy@gmail.com">marynergy@gmail.com</a></p>
-<p><a href="https://marynergy-cloud.github.io/Verbindung-Heilung/" target="_blank" rel="noopener noreferrer">Marynergy</a></p><br>
-</footer>
-
-
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const overlay = document.getElementById('panelOverlay');
-  const panel = document.getElementById('panel');
-  const hero = document.getElementById('panelHero');
-  const titleEl = document.getElementById('panelTitle');
-  const contentEl = document.getElementById('panelContent');
-  const closeBtn = document.getElementById('panelClose');
-  let savedScrollY = 0;
-  let lastClicked = null;
-
-  function lockBackground(scrollY){
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-  }
-  function unlockBackground(){
-    const scrollY = -parseInt(document.body.style.top || '0', 10);
-    document.body.style.position = '';
-    document.body.style.top = '';
-    window.scrollTo(0, scrollY);
-  }
-
-  function openPanel(triggerEl, title, infoHTML, imgUrl){
-    // ARIA
-    if(triggerEl) triggerEl.setAttribute('aria-expanded','true');
-    titleEl.textContent = title || 'Ohne Titel';
-    // contentEl.innerHTML = infoHTML || ''; // falls Input unsicher: sanitizen!
-    contentEl.innerHTML = infoHTML || '';
-    if(imgUrl){ hero.style.backgroundImage = `url("${imgUrl}")`; hero.style.display = 'block'; } 
-    else { hero.style.backgroundImage = ''; hero.style.display = 'none'; }
-    overlay.classList.add('open'); panel.classList.add('open'); overlay.setAttribute('aria-hidden','false');
-    panel.scrollTop = contentEl.scrollTop = 0;
-    lockBackground(savedScrollY);
-    // Fokus ins Panel
-    closeBtn?.focus({preventScroll:true});
-  }
-
-  function closePanel(){
-    overlay.classList.remove('open'); panel.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
-    // reset aria-expanded on lastClicked
-    if(lastClicked) lastClicked.setAttribute('aria-expanded','false');
-    setTimeout(() => { unlockBackground(); lastClicked?.focus(); savedScrollY=0; }, 240);
-  }
-
-  document.querySelectorAll('.clickable').forEach(el=>{
-    if(!el.hasAttribute('role')) el.setAttribute('role','button');
-    if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');
-    // ensure aria attributes exist
-    if(!el.hasAttribute('aria-haspopup')) el.setAttribute('aria-haspopup','dialog');
-    if(!el.hasAttribute('aria-expanded')) el.setAttribute('aria-expanded','false');
-
-    el.addEventListener('click', (e)=>{ 
-      e.preventDefault();
-      savedScrollY=window.scrollY;
-      lastClicked=el;
-      openPanel(el, el.textContent.trim(), el.getAttribute('data-info'), el.getAttribute('data-img'));
-    });
-    el.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.code==='Space'){ e.preventDefault(); el.click(); } });
-  });
-
-  closeBtn?.addEventListener('click', closePanel);
-  overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closePanel(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanel(); });
-
-  // Tabs (Beibehaltung deiner Logik)
-  const nav = document.querySelector('nav[role="tablist"]');
-  const tabs = Array.from(nav.querySelectorAll('[role="tab"]'));
-  const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
-  function activateTab(tab){
-    const targetId = tab.getAttribute('aria-controls');
-    tabs.forEach(t=>{ t.classList.remove('active'); t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
-    panels.forEach(p=>{ p.classList.remove('active'); p.setAttribute('aria-hidden','true'); });
-    tab.classList.add('active'); tab.setAttribute('aria-selected','true'); tab.removeAttribute('tabindex');
-    document.getElementById(targetId)?.classList.add('active');
-  }
-  tabs.forEach(tab=>{
-    tab.setAttribute('tabindex', tab.getAttribute('aria-selected')==='true'?'0':'-1');
-    tab.addEventListener('click', ()=>activateTab(tab));
-    tab.addEventListener('keydown', (e)=>{
-      let idx = tabs.indexOf(tab);
-      if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); activateTab(tabs[(idx+1)%tabs.length]); tabs[(idx+1)%tabs.length].focus(); }
-      if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); activateTab(tabs[(idx-1+tabs.length)%tabs.length]); tabs[(idx-1+tabs.length)%tabs.length].focus(); }
-      if(e.key==='Home'){ e.preventDefault(); activateTab(tabs[0]); tabs[0].focus(); }
-      if(e.key==='End'){ e.preventDefault(); activateTab(tabs[tabs.length-1]); tabs[tabs.length-1].focus(); }
-    });
-  });
-  activateTab(tabs.find(t=>t.getAttribute('aria-selected')==='true')||tabs[0]);
-});
-
-</script>
-
-<!-- Off-Canvas Panel -->
-<div id="panelOverlay" class="panel-overlay" aria-hidden="true">
-  <aside id="panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
-    <button id="panelClose" class="close" aria-label="Schließen">&times;</button>
-    <div id="panelHero" class="hero" aria-hidden="true"></div>
-    <h2 id="panelTitle"></h2>
-    <div id="panelContent" class="content" tabindex="0"></div>
-  </aside>
-</div>
 </body>
 </html>
