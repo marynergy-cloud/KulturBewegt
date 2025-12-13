@@ -34,8 +34,32 @@
             height: 100%;
             z-index: -1;
             object-fit: cover;
-            opacity: 0.4; /* Sehr hell lassen, damit Weiß dominiert */
-            filter: grayscale(100%) brightness(1.2); /* S/W und extra hell */
+            opacity: 0.4; 
+            filter: grayscale(100%) brightness(1.2); 
+        }
+
+        /* SOUND BUTTON STIL */
+        #sound-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--ink-color);
+            color: var(--ink-color);
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        #sound-toggle:hover {
+            background: var(--ink-color);
+            color: #fff;
         }
 
         .container { 
@@ -52,12 +76,11 @@
             margin-bottom: 60px; 
         }
         
-        /* Flexbox für Positionierung */
         header .container {
             display: flex;
-            justify-content: flex-end; /* Schiebt den Link nach rechts */
+            justify-content: flex-end; 
             align-items: center;
-            position: relative; /* Anker für das absolute Logo */
+            position: relative; 
         }
 
         .logo { 
@@ -69,14 +92,12 @@
             padding-bottom: 5px;
             font-weight: 600;
             
-            /* ABSOLUTE ZENTRIERUNG */
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
         }
 
-        /* DEZENTER LINK ZUR HAUPTSEITE */
         .nav-link {
             font-size: 0.75rem; 
             color: var(--ink-color);
@@ -85,13 +106,12 @@
             letter-spacing: 1.5px;
             font-weight: 500;
             border-bottom: 1px solid transparent;
-            opacity: 0.5; /* Halb-transparent (Dezent) */
+            opacity: 0.5; 
             transition: all 0.3s ease;
             position: relative;
             z-index: 10;
         }
         
-        /* Beim Drüberfahren wird er sichtbar */
         .nav-link:hover {
             opacity: 1; 
             border-bottom: 1px solid var(--ink-color);
@@ -108,7 +128,7 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            margin-bottom: 100px; /* Mehr Abstand da Text darunter entfernt wurde */
+            margin-bottom: 100px;
         }
 
         .triptych {
@@ -160,7 +180,7 @@
         .cta-box {
             border: 1px solid var(--ink-color);
             padding: 40px;
-            margin-bottom: 80px; /* Abstand zum Footer */
+            margin-bottom: 80px; 
             background: rgba(255, 255, 255, 0.6); 
             backdrop-filter: blur(5px);
         }
@@ -188,12 +208,15 @@
         <source src="art-bg.mp4" type="video/mp4">
     </video>
 
+    <button id="sound-toggle" onclick="toggleSound()">
+        Sound: Aus
+    </button>
+
     <div class="container">
         
         <header>
             <div class="container" style="padding: 0; margin: 0;">
                 <div class="logo">MARYNERGY愛 <span>FLOW</span></div>
-                
                 <a href="https://marynergy-cloud.github.io/Verbindung-Heilung/" class="nav-link">Marynergy ↗</a>
             </div>
         </header>
@@ -259,5 +282,21 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        const video = document.getElementById('bg-video');
+        const soundBtn = document.getElementById('sound-toggle');
+
+        function toggleSound() {
+            if (video.muted) {
+                video.muted = false;
+                soundBtn.innerHTML = "Sound: An";
+            } else {
+                video.muted = true;
+                soundBtn.innerHTML = "Sound: Aus";
+            }
+        }
+    </script>
+
 </body>
 </html>
