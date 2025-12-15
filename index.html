@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Marynergy Flow: Der künstlerische Ausdruck. Musik, Tanz und QiDance in reiner Energie.">
+    <meta name="description" content="Marynergy Flow: The Artistic Expression. Music, Dance, and QiDance in pure energy.">
     <title>Marynergy Flow | Artistic Expression</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +13,13 @@
     <style>
         /* --- DESIGN VARIABLES: PURE MONOCHROME --- */
         :root {
-            --bg-color: #000000; /* Tiefschwarz */
-            --ink-color: #ffffff; /* Reines Weiß für Text */
+            --bg-color: #000000; /* Deep Black */
+            --ink-color: #ffffff; /* Pure White for Text */
             
-            /* KEIN GRÜN MEHR - Nur Weiß als Akzent */
+            /* Accent: Pure White */
             --accent-color: #ffffff; 
             
-            /* "Nicht so dunkel": Ein heller, milchiger Schleier (8% Weiß) */
+            /* Glass Effect: Light milky veil (8% White) */
             --glass-bg: rgba(255, 255, 255, 0.08); 
             --glass-border: rgba(255, 255, 255, 0.2); 
             
@@ -40,7 +40,7 @@
             overflow-x: hidden;
         }
 
-        /* VIDEO BACKGROUND - High Contrast B&W */
+        /* VIDEO BACKGROUND - Visuals only */
         #bg-video {
             position: fixed;
             top: 0;
@@ -50,7 +50,7 @@
             z-index: -1;
             object-fit: cover;
             opacity: 0.9; 
-            /* Hoher Kontrast für sattes Schwarz, striktes Grayscale */
+            /* High Contrast, Strict Grayscale */
             filter: grayscale(100%) contrast(1.3) brightness(0.9);
         }
 
@@ -155,7 +155,7 @@
             border-top: 1px solid var(--glass-border);
             border-bottom: 1px solid var(--glass-border);
             padding: 40px 0;
-            background: var(--glass-bg); /* Hellerer Hintergrund */
+            background: var(--glass-bg); 
             backdrop-filter: blur(5px);
         }
         .triptych-item h3 { 
@@ -175,11 +175,10 @@
             text-shadow: 0 2px 10px rgba(0,0,0,1);
         }
         
-        /* SESSION CARDS - Heller & B&W */
+        /* SESSION CARDS */
         .session-item {
             margin-bottom: 40px;
             padding: 40px; 
-            /* Hier die Anpassung: Heller (8% Weiß) statt dunkles Schwarz */
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(8px);
             border-radius: 4px;
@@ -191,7 +190,7 @@
         }
         .session-item:hover { 
             transform: translateY(-3px); 
-            background: rgba(255, 255, 255, 0.12); /* Wird beim Hover noch etwas heller */
+            background: rgba(255, 255, 255, 0.12); 
             border-color: rgba(255, 255, 255, 0.4);
         }
         
@@ -201,7 +200,7 @@
             font-size: 0.7rem; 
             text-transform: uppercase; 
             letter-spacing: 1.5px; 
-            color: #ccc; /* Dezentes Grau statt Grün */
+            color: #ccc; 
             font-weight: 600;
             border: 1px solid rgba(255,255,255,0.2);
             display: inline-block;
@@ -213,7 +212,7 @@
             border: 1px solid var(--glass-border);
             padding: 50px;
             margin-bottom: 80px; 
-            background: rgba(255, 255, 255, 0.08); /* Helleres Glas */
+            background: rgba(255, 255, 255, 0.08); 
             backdrop-filter: blur(10px);
             border-radius: 4px;
         }
@@ -232,7 +231,7 @@
         }
         .btn-link:hover {
             background-color: var(--ink-color);
-            color: #000; /* Schwarz auf Weiß */
+            color: #000; 
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
         
@@ -249,11 +248,15 @@
 <body>
 
     <video autoplay muted loop playsinline id="bg-video">
-        <source src="art-bg.mp4" type="video/mp4">
+        <source src="art-video.mp4" type="video/mp4">
     </video>
 
+    <audio id="bg-audio" loop>
+        <source src="art-mp3.mp3" type="audio/mpeg">
+    </audio>
+
     <button id="sound-toggle" onclick="toggleSound()">
-        Sound: Aus
+        Sound: Off
     </button>
 
     <div class="container">
@@ -261,63 +264,64 @@
         <header>
             <div class="container" style="padding: 0; margin: 0;">
                 <div class="logo">Marynergy 愛<span>Flow</span></div>
+                <a href="index-en.html" class="nav-link">Main Page ↗</a>
             </div>
         </header>
         
         <section class="hero">
-            <h1>Der Ausdruck.</h1>
-            <p>Musik. Tanz. QiDance.</p>
+            <h1>The Expression.</h1>
+            <p>Music. Dance. QiDance.</p>
         </section>
 
         <section class="triptych">
             <div class="triptych-item">
-                <h3>Musik</h3>
-                <p>Frequenz & Resonanz.</p>
+                <h3>Music</h3>
+                <p>Frequency & Resonance.</p>
             </div>
             <div class="triptych-item">
-                <h3>Tanz</h3>
-                <p>Intuition & Freiheit.</p>
+                <h3>Dance</h3>
+                <p>Intuition & Freedom.</p>
             </div>
             <div class="triptych-item">
                 <h3>QiDance</h3>
-                <p>Energie & Transformation.</p>
+                <p>Energy & Transformation.</p>
             </div>
         </section>
 
         <section class="menu-section">
-            <h2 class="menu-title">Die Praxis</h2>
+            <h2 class="menu-title">The Practice</h2>
 
             <div class="session-item">
-                <div class="session-name">Tanz</div>
+                <div class="session-name">Dance</div>
                 <p class="session-desc">
-                    Wir nutzen verschiedene Rhythmen und Klangströme, um durch intuitiven Tanz den Körper zu befreien und das Herz zu öffnen. Keine Choreografie, nur Ausdruck.
+                    We use distinct rhythms and sound currents to liberate the body and open the heart through intuitive dance. No choreography, only expression.
                 </p>
-                <div class="session-tags">Freisetzung • Entladung • Intuition</div>
+                <div class="session-tags">Unleashing • Release • Intuition</div>
             </div>
 
             <div class="session-item">
                 <div class="session-name">QiDance</div>
                 <p class="session-desc">
-                    Die Verschmelzung von Intention und Bewegung. Atem und Takt führen in den Flow-Zustand. Blockaden lösen sich, Energie wird transformiert.
+                    The fusion of intention and movement. Breath and beat lead into the flow state. Blockages dissolve, energy transforms.
                 </p>
-                <div class="session-tags">Qigong • Rhythmus • Heilung</div>
+                <div class="session-tags">Qigong • Rhythm • Healing</div>
             </div>
         </section>
 
         <div class="cta-box">
-            <p>„Jeder Prozess beginnt mit Resonanz.“</p>
-            <a href="mailto:marynergy@gmail.com?subject=Anfrage%20Ausdruck" class="btn-link">
-                Gespräch vereinbaren
+            <p>“Every process begins with resonance.”</p>
+            <a href="mailto:marynergy@gmail.com?subject=Inquiry%20Expression" class="btn-link">
+                Schedule a Conversation
             </a>
         </div>
         
         <footer>
-            <a href="https://marynergy-cloud.github.io/Verbindung-Heilung/" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;">Zurück zur Hauptseite</a>
+            <a href="https://marynergy-cloud.github.io/marynergy-flow/index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;">Back to Main Page</a>
             
             <div style="margin-top: 30px; font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px;">
-                <a href="datenschutz.html" style="color: inherit; text-decoration: none;">Datenschutz</a>
+                <a href="datenschutz.html" style="color: inherit; text-decoration: none;">Privacy Policy</a>
                 <span style="margin: 0 8px;">|</span>
-                <a href="impressum.html" style="color: inherit; text-decoration: none;">Impressum</a>
+                <a href="impressum.html" style="color: inherit; text-decoration: none;">Imprint</a>
             </div>
 
             <div style="margin-top: 15px; font-size: 0.75rem; opacity: 0.6;">
@@ -327,16 +331,16 @@
     </div>
 
     <script>
-        const video = document.getElementById('bg-video');
         const soundBtn = document.getElementById('sound-toggle');
+        const audio = document.getElementById('bg-audio');
 
         function toggleSound() {
-            if (video.muted) {
-                video.muted = false;
-                soundBtn.innerHTML = "Sound: An";
+            if (audio.paused) {
+                audio.play();
+                soundBtn.innerHTML = "Sound: On";
             } else {
-                video.muted = true;
-                soundBtn.innerHTML = "Sound: Aus";
+                audio.pause();
+                soundBtn.innerHTML = "Sound: Off";
             }
         }
     </script>
